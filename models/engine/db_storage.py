@@ -21,7 +21,7 @@ class DBStorage():
     def __init__(self):
         """Instantiation of DBStorage class
         """
-        MySQL_usr = getenv('HBNB_MYSQL_USER')
+        MySQL_user = getenv('HBNB_MYSQL_USER')
         MySQL_pwd = getenv('HBNB_MYSQL_PWD')
         MySQL_host = getenv('HBNB_MYSQL_HOST')
         MySQL_db = getenv('HBNB_MYSQL_DB')
