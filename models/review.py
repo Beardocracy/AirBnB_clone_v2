@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """This is the review class"""
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 from models.place import Place
 from models.user import User
 from sqlalchemy import Column, String, ForeignKey
