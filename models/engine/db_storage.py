@@ -35,13 +35,11 @@ class DBStorage():
     def all(self, cls=None):
         """Show all class objects in DBStorage or specified class if given
         """
-        if cls is not None:
+        if cls:
             objects = self.__session.query(cls).all()
         else:
-            classes = [State, City, User, Place, Review, Amenity]
-            objects = []
-            for c in classes:
-                objects += self.__session.query(c)
+            objects = self.__session.query(State, City, User, Place, Review,
+                                           Amenity).all()
         my_dict = {}
         for obj in objects:
             key = '{}.{}'.format(type(obj).__name__, obj.id)
