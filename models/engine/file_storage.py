@@ -64,7 +64,8 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
-        ''' Deletes obj from __objects if its inside '''
+        """ Deletes obj from __objects if its inside
+        """
         object_key = "{}.{}".format(type(obj).__name__, obj.id)
         if object_key in self.__objects.keys():
             self.__objects.pop(object_key)
