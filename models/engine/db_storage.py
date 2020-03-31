@@ -35,7 +35,7 @@ class DBStorage():
     def all(self, cls=None):
         """Show all class objects in DBStorage or specified class if given
         """
-        if cls:
+        if cls is not None:
             objects = self.__session.query(cls).all()
         else:
             classes = [State, City, User, Place, Review, Amenity]
