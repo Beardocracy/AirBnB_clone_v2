@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """This is the database storage"""
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker, scoped_session, relationship
 from os import getenv
 from models.base_model import BaseModel, Base
@@ -28,7 +28,6 @@ class DBStorage():
         MySQL_env = getenv('HBNB_ENV')
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
             MySQL_user, MySQL_pwd, MySQL_host, MySQL_db), pool_pre_ping=True)
-        Base.metadata.create_all(self.__engine)
         if MySQL_env == "test":
             Base.metadata.drop_all(self.__engine)
 
