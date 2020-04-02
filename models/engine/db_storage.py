@@ -37,8 +37,8 @@ class DBStorage():
         if cls:
             objects = self.__session.query(cls).all()
         else:
-            objects = self.__session.query(State, City, User, Place, Review,
-                                           Amenity).all()
+            objects = self.__session.query(User, State, City, Amenity, Place,
+                                           Review).all()
         my_dict = {}
         for obj in objects:
             key = '{}.{}'.format(type(obj).__name__, obj.id)
