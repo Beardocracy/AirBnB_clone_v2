@@ -8,16 +8,17 @@ from fabric.api import env, put, run
 env.hosts = ["34.73.37.244", "35.185.1.2"]
 env.user = "ubuntu"
 
-def do_deploy(archive_path):
-	''' Distributes archive to servers '''
-	if archive_path is None or not os.path.isfile(archive_path):
-		print("Please enter a path to an existing file")
-		return False
-	
-	archive_full = os.path.basename(archive_path)
-	archive_short = archive_full.split(".")[0]
 
-	put(local_path=archive_path, remote_path="/tmp/")
+def do_deploy(archive_path):
+    ''' Distributes archive to servers '''
+    if archive_path is None or not os.path.isfile(archive_path):
+        print("Please enter a path to an existing file")
+        return False
+
+    archive_full = os.path.basename(archive_path)
+    archive_short = archive_full.split(".")[0]
+
+    put(local_path=archive_path, remote_path="/tmp/")
     run("mkdir -p /data/web_static/releases/{}".format(archive_short))
     run("tar -xzf /tmp/{} -C /data/web_static/releases/{}".format(archive_full, archive_short))
     run("rm /tmp/{}".format(archive_full))
