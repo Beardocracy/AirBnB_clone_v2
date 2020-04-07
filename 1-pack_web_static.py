@@ -16,8 +16,7 @@ def do_pack():
                                                 str(time.day),
                                                 str(time.hour),
                                                 str(time.minute),
-                                                str(time.second)
-                                               )
+                                                str(time.second))
     local('mkdir -p versions')
     archive = local('tar -cvzf versions/{} web_static'.format(name))
     if archive.failed:
