@@ -16,7 +16,7 @@ def do_deploy(archive_path):
         return False
 
     arc_full = os.path.basename(archive_path)
-    arc_short = archive_full.split(".")[0]
+    arc_short = arc_full.split(".")[0]
 
     put(local_path=archive_path, remote_path="/tmp/")
     run("mkdir -p /data/web_static/releases/{}".format(arc_short))
