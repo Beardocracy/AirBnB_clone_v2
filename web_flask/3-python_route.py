@@ -20,8 +20,9 @@ def c(text):
     return 'C {}'.format(' '.join(text.split('_')))
 
 
+@app.route('/python', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def python(text):
+def python(text='is cool'):
     return 'Python {}'.format(' '.join(text.split('_')))
 
 if __name__ == '__main__':
