@@ -9,17 +9,16 @@ app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def teardown_db(error):
+def teardown_db(exception):
         storage.close()
 
 
-@app.route('states')
-@app.route('states/<id>')
-def states(id=None):
-    states = storage.all(State)
-    if id is not None:
-        states = list(filter(lambda x: x.id == id, states))
-    return render_template('9-states.html', states=states)
+@app.route('/states', strict_slashes=False)
+@app.route('/states/<id>', strict_slashes=False)
+def states(id='0'):
+    ''' Displays HTML page with list of states '''
+    states = storage.all(State).values()
+    return render_template('9-states.html', states=states, id=id)
 
 
 if __name__ == '__main__':
